@@ -28,5 +28,21 @@ def _auto_register() -> None:
 
     register_domain("text_classification", TextClassificationDomain)
 
+    from meta_harness.domains.ai_village import (
+        AgentAssessDomain,
+        AgentDecideDomain,
+        AgentPlanDomain,
+        AgentReflectDomain,
+        AgentTalkDomain,
+        AgentThinkDomain,
+    )
+
+    register_domain("agent_decide", AgentDecideDomain)
+    register_domain("agent_think", AgentThinkDomain)
+    register_domain("agent_plan", AgentPlanDomain)
+    register_domain("agent_talk", AgentTalkDomain)
+    register_domain("agent_reflect", AgentReflectDomain)
+    register_domain("agent_assess", AgentAssessDomain)
+
 
 _auto_register()
