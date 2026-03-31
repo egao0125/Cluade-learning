@@ -1,0 +1,11 @@
+[project]
+name = "meta-harness"
+version = "0.1.0"
+description = "Evolutionary search over LLM harnesses using Claude Code as proposer"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]

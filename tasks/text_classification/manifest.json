@@ -1,0 +1,16 @@
+{
+  "domain": "text_classification",
+  "description": "Sentiment classification of short texts into positive/negative/neutral",
+  "categories": ["positive", "negative", "neutral"],
+  "num_examples": 100,
+  "source": "Synthetic examples for Meta-Harness development",
+  "format": {
+    "id": "Unique task ID (task_001 ... task_100)",
+    "input": "Short text to classify",
+    "label": "Ground truth category (positive|negative|neutral)",
+    "metadata": {
+      "categories": ["positive", "negative", "neutral"],
+      "difficulty": "easy|medium|hard"
+    }
+  }
+}
