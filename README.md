@@ -16,6 +16,9 @@ A comprehensive analysis of Claude Code's architecture, system prompts, engineer
 - [Hook System](docs/08-hooks.md) - Lifecycle hooks, pre/post tool hooks
 - [Community Methods](docs/09-community-methods.md) - Techniques from the community for using Claude Code effectively
 - [Key Patterns & Lessons](docs/10-patterns.md) - Engineering patterns, optimization strategies
+- [Full System Prompt Reference](docs/11-full-system-prompt-reference.md) - Reconstructed complete system prompt
+- [Ecosystem Map](docs/12-ecosystem-map.md) - 30+ repos, tools, and resources mapped
+- [Hidden Internals](docs/13-hidden-internals.md) - Unreleased features (BUDDY, KAIROS, ULTRAPLAN), codenames, multi-model architecture
 
 ## Quick Start
 
