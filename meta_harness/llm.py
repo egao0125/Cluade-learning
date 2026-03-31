@@ -67,12 +67,14 @@ def call_llm(
     system: str | None = None,
     max_tokens: int = 4096,
     temperature: float = 0.0,
+    api_key: str | None = None,
 ) -> str:
     """Call the Anthropic API and record the interaction.
 
     Returns the assistant's text response.
+    Uses ANTHROPIC_API_KEY env var, or pass api_key explicitly.
     """
-    client = anthropic.Anthropic()
+    client = anthropic.Anthropic(api_key=api_key) if api_key else anthropic.Anthropic()
 
     kwargs: dict[str, Any] = {
         "model": model,

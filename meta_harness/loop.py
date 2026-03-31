@@ -201,14 +201,18 @@ def run_evolution(
 
 
 def _load_seeds(config: MetaHarnessConfig) -> list[HarnessInfo]:
-    """Load seed harnesses from the seeds directory."""
+    """Load seed harnesses from the seeds directory.
+
+    Searches both `seeds/*.py` and `seeds/<subdirectory>/*.py` to support
+    domain-specific seed directories like `seeds/ai_village/`.
+    """
     seeds = []
     seeds_dir = config.seeds_dir
     if not seeds_dir.exists():
         logger.warning(f"Seeds directory not found: {seeds_dir}")
         return seeds
 
-    for path in sorted(seeds_dir.glob("*.py")):
+    for path in sorted(seeds_dir.glob("**/*.py")):
         try:
             harness = load_harness(path, harness_id=path.stem)
             seeds.append(harness)

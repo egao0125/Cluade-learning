@@ -97,6 +97,23 @@ def cmd_frontier(args: argparse.Namespace) -> None:
             print(row)
 
 
+def cmd_apply(args: argparse.Namespace) -> None:
+    """Apply evolved harness back to AIVillage."""
+    from meta_harness.apply_harness import main as apply_main
+
+    # Delegate to apply_harness module
+    sys.argv = ["apply_harness", "--workspace", args.workspace, "--harness-id", args.harness_id]
+    if args.baseline_id:
+        sys.argv.extend(["--baseline-id", args.baseline_id])
+    if args.village_repo:
+        sys.argv.extend(["--village-repo", args.village_repo])
+    if args.function:
+        sys.argv.extend(["--function", args.function])
+    if args.output:
+        sys.argv.extend(["--output", args.output])
+    apply_main()
+
+
 def cmd_propose(args: argparse.Namespace) -> None:
     """Run a single proposer invocation (for testing)."""
     from meta_harness.proposer import invoke_proposer
@@ -172,6 +189,15 @@ def main() -> None:
     p_prop.add_argument("--proposals", type=int, default=3)
     p_prop.add_argument("--dry-run", action="store_true")
 
+    # apply
+    p_apply = sub.add_parser("apply", help="Apply evolved harness to AIVillage")
+    p_apply.add_argument("--workspace", default="workspace")
+    p_apply.add_argument("--harness-id", required=True)
+    p_apply.add_argument("--baseline-id", default=None)
+    p_apply.add_argument("--village-repo", default=None)
+    p_apply.add_argument("--function", default="decide")
+    p_apply.add_argument("--output", default=None)
+
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -184,6 +210,7 @@ def main() -> None:
         "evaluate": cmd_evaluate,
         "frontier": cmd_frontier,
         "propose": cmd_propose,
+        "apply": cmd_apply,
     }
     commands[args.command](args)
 
